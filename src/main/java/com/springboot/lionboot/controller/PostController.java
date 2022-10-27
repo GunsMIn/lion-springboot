@@ -24,8 +24,13 @@ public class PostController {
         return sb.toString();
     }
 
-    @PostMapping(value = "/membersdto")
+    @PostMapping(value = "/members2")
     public String postdto(@RequestBody MemberDto memberDto) {
         return memberDto.toString();
+    }
+
+    @PostMapping(value = "/members3")
+    public MemberDto postdto2(@RequestBody MemberDto memberDto) {
+        return memberDto;
     }
 }
