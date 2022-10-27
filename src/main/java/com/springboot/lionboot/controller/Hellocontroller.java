@@ -1,9 +1,7 @@
 package com.springboot.lionboot.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.springboot.lionboot.dto.MemberDto;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -35,6 +33,14 @@ public class Hellocontroller {
         return sb.toString();
     }
 
+
+    @GetMapping("/request3")
+    public String getdto(@ModelAttribute MemberDto memberDto) {
+        String name = memberDto.getName();
+        String email = memberDto.getEmail();
+        String organization = memberDto.getOrganization();
+        return name + " " + email + " " + organization;
+    }
 
 
 }
