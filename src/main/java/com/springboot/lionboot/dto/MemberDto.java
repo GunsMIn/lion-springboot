@@ -35,4 +35,13 @@ public class MemberDto {
     public void setOrganization(String organization) {
         this.organization = organization;
     }
+
+    @Override
+    public String toString() {
+        return "MemberDto{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", organization='" + organization + '\'' +
+                '}';
+    }
 }
