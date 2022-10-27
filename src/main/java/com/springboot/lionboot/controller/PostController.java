@@ -17,7 +17,9 @@ public class PostController {
     @PostMapping(value = "/members")
     public String postMember(@RequestBody Map<String,Object> postData) {
         StringBuilder sb = new StringBuilder();
-
-        
+        postData.entrySet().forEach(m->{
+            sb.append(m.getKey() + " : " + m.getValue() + "\n");
+        });
+        return sb.toString();
     }
 }
