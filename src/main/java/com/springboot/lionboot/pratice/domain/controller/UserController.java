@@ -1,11 +1,13 @@
 package com.springboot.lionboot.pratice.domain.controller;
 
-import com.springboot.lionboot.pratice.domain.User;
+import com.springboot.lionboot.pratice.domain.domain.User;
 import com.springboot.lionboot.pratice.domain.repository.UserDao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,6 +16,20 @@ public class UserController {
 
     private final UserDao userDao;
 
+    @GetMapping("/members/{id}")
+    public User get(@PathVariable String id) {
+        User byId = userDao.findById(id);
+        return byId;
+    }
+
+    //회원 전체 조회
+    @GetMapping("/membersList")
+    public List<User> getAll() {
+        List<User> all = userDao.getAll();
+        return all;
+    }
+
+    //등록
     @PostMapping("/members")
     public User join(@ModelAttribute User user) {
         userDao.add(user);
@@ -33,6 +49,7 @@ public class UserController {
         userDao.deleteAll();
         return "유저 전체가 삭제되었습니다";
     }
+
 
 
 
