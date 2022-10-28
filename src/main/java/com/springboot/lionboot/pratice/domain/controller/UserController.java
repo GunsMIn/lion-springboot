@@ -5,10 +5,7 @@ import com.springboot.lionboot.pratice.domain.repository.UserDao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,8 +21,15 @@ public class UserController {
         return user;
     }
 
+    @DeleteMapping("/members/{id}")
+    public String removeOne(@PathVariable String id) {
+        userDao.deleteById(id);
+        return "유저 한명이 삭제되었습니다.";
+    }
+
+
     @DeleteMapping("/members")
-    public String remove() {
+    public String removeAll() {
         userDao.deleteAll();
         return "유저 전체가 삭제되었습니다";
     }
