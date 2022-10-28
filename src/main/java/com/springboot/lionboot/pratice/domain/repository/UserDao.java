@@ -1,8 +1,9 @@
 package com.springboot.lionboot.pratice.domain.repository;
 
 
-import com.springboot.lionboot.pratice.domain.User;
+import com.springboot.lionboot.pratice.domain.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -24,48 +26,44 @@ public class UserDao {
     }
 
 
+    RowMapper<User> rowMapper = new RowMapper<User>() {
+        @Override
+        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+            User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+            return user;
+        }
+    };
 
-    public void add(User user){
-        this.jdbcTemplate.update("insert into users(id, name, password) values(?,?,?)",
+
+    public int deleteAll() {
+       return this.jdbcTemplate.update("DELETE FROM users");
+    }
+
+    public int getCount()  {
+        return this.jdbcTemplate.queryForObject("SELECT count(*) FROM users;", Integer.class);
+    }
+
+    public void add(User user) {
+//        Connection conn = connectionMaker.openConnection();
+        this.jdbcTemplate.update("INSERT INTO users(id, name, password) VALUES(?, ?, ?);",
                 user.getId(), user.getName(), user.getPassword());
 
     }
-
-    public int deleteAll() {
-        return this.jdbcTemplate.update("delete from users");
+    public User findById(String id)  {
+        String sql = "SELECT id, name, password FROM users WHERE id=?;";
+        return this.jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
-    public User findById(String id) {
-        Map<String, String> env = System.getenv();
-        Connection c;
-        try {
-            // DB접속 (ex sql workbeanch실행)
-            c = dataSource.getConnection();
-
-            // Query문 작성
-            PreparedStatement pstmt = c.prepareStatement("SELECT * FROM users WHERE id = ?");
-            pstmt.setString(1, id);
-
-            // Query문 실행
-            ResultSet rs = pstmt.executeQuery();
-            User user = null;
-            if (rs.next()) {
-                user = new User(rs.getString("id"), rs.getString("name"),
-                        rs.getString("password"));
-            }
-
-            rs.close();
-            pstmt.close();
-            c.close();
-
-            if (user == null) throw new RuntimeException();
-
-            return user;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public List<User> getAll(){
+        String sql = "SELECT * from users order by id";
+        return this.jdbcTemplate.query(sql, rowMapper);
     }
+
+    public int deleteById(String id) {
+        return this.jdbcTemplate.update("delete from users where id = ?",id);
+    }
+
+
 }
 
 
