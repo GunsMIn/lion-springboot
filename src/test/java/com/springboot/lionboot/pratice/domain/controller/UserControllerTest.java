@@ -1,17 +1,11 @@
 package com.springboot.lionboot.pratice.domain.controller;
 
-import com.springboot.lionboot.pratice.domain.User;
+import com.springboot.lionboot.pratice.domain.domain.User;
 import com.springboot.lionboot.pratice.domain.repository.UserDao;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
@@ -34,10 +28,10 @@ class UserControllerTest {
 
     @Test
     public void 회원가입테스트() {
-        User user = new User("19","김건우","1234");
+        User user = new User("21","김건우3","1234");
         userDao.add(user);
 
-        User byId = userDao.findById("1");
+        User byId = userDao.findById("21");
         Assertions.assertEquals(byId.getName(),user.getName());
     }
 
