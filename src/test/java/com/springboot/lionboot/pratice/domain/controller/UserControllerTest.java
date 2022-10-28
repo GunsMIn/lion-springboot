@@ -7,13 +7,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@ExtendWith(SpringExtension.class)
+@SpringBootTest
 class UserControllerTest {
 
     @Autowired private UserDao userDao;
@@ -22,18 +23,18 @@ class UserControllerTest {
     User user2;
     User user3;
 
-    @BeforeEach
+   /* @BeforeEach
     void setUp() {
         this.user1 = new User("30", "김xx", "1234");
         this.user2 = new User("31", "이xx", "1234");
         this.user3 = new User("32", "박xx", "1234");
-    }
+    }*/
 
 
 
     @Test
     public void 회원가입테스트() {
-        User user = new User("1","김건우","1234");
+        User user = new User("19","김건우","1234");
         userDao.add(user);
 
         User byId = userDao.findById("1");
