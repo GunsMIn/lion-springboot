@@ -23,7 +23,7 @@ public class UserController {
     }
 
     //회원 전체 조회
-    @GetMapping("/membersList")
+    @GetMapping("/members")
     public List<User> getAll() {
         List<User> all = userDao.getAll();
         return all;
