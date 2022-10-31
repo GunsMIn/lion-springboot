@@ -12,6 +12,7 @@
 
 
 ### 221031 (병원 정보처리 api)
+![image](https://user-images.githubusercontent.com/104709432/198946914-030c5b49-4a33-40eb-b0d0-7e1e613b9d89.png)
 - **practice 패키지**: 
 - **readLingParser 패키지** ` : .csv로 받은 10만건 이상의 병원 정모 공공 데이터를 spring에서 제작한 Hospital 객체로 parsing해주는 패키지 
 - **domain 패키지**  : Hospital 클래스 제작
