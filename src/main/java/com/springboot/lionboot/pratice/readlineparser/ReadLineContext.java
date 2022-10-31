@@ -22,7 +22,12 @@ public class ReadLineContext<T> {
         );
         String str;
         while ((str = reader.readLine()) != null) {
-            result.add(parser.parse(str));
+            try {
+                result.add(parser.parse(str));
+            } catch (Exception e) {
+                System.out.printf("파싱중 문제가 생겨 이 라인은 넘어갑니다. 파일내용 : %s",str.substring(0,20));
+                System.out.println();
+            }
         }
         reader.close();
         return result;
