@@ -8,11 +8,11 @@
 <details>
 <summary>병원 정보 처리 </summary>
 
-##(221031 ~ )
+
 ### 221031 (병원 정보처리 api)
-- `practice 패키지` : 
-- **LikeLion-gradle** . `dao` : DAO 복습(221021 내용)
-- **Read-line-parser-gradle** . `dao` : DataSource 인터페이스, 익명클래스, JdbcContext, JdbcTemplate
+- **practice 패키지**: 
+- **readLingParser 패키지** ` : .csv로 받은 10만건 이상의 병원 정모 공공 데이터를 spring에서 제작한 Hospital 객체로 parsing해주는 패키지 
+- **domain 패키지**  : Hospital 클래스 제작
 </details>
 
 ---
