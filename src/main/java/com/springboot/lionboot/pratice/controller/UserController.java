@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 @Slf4j
 public class UserController {
 
     private final UserDao userDao;
+
+    public UserController(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @GetMapping("/members/{id}")
     public User get(@PathVariable String id) {
@@ -37,13 +40,14 @@ public class UserController {
         return user;
     }
 
+
     @DeleteMapping("/members/{id}")
     public String removeOne(@PathVariable String id) {
         userDao.deleteById(id);
         return "유저 한명이 삭제되었습니다.";
     }
 
-
+    //전체 삭제
     @DeleteMapping("/members")
     public String removeAll() {
         userDao.deleteAll();

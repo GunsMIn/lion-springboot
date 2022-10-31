@@ -4,7 +4,9 @@ package com.springboot.lionboot.pratice.domain.repository;
 import com.springboot.lionboot.pratice.domain.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,7 +16,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-@Repository
+@Component
 public class UserDao {
 
     private final DataSource dataSource;
@@ -49,6 +51,7 @@ public class UserDao {
                 user.getId(), user.getName(), user.getPassword());
 
     }
+
     public User findById(String id)  {
         String sql = "SELECT id, name, password FROM users WHERE id=?;";
         return this.jdbcTemplate.queryForObject(sql, rowMapper, id);
@@ -60,6 +63,7 @@ public class UserDao {
     }
 
     public int deleteById(String id) {
+
         return this.jdbcTemplate.update("delete from users where id = ?",id);
     }
 

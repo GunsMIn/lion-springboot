@@ -1,6 +1,6 @@
 package com.springboot.lionboot.pratice.domain.repository;
 
-import com.springboot.lionboot.pratice.domain.User;
+import com.springboot.lionboot.pratice.domain.domain.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

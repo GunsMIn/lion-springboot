@@ -1,4 +1,4 @@
-package com.springboot.lionboot.pratice.domain;
+package com.springboot.lionboot.pratice.domain.domain;
 
 
 import lombok.Getter;
@@ -10,7 +10,6 @@ public class User {
     private String id;
     private String name;
     private String password;
-
 
     public User(String id, String name, String password) {
         this.id = id;

@@ -38,8 +38,10 @@ class UserControllerTest {
 
     @Test
     public void 회원id로삭제() {
-        userDao.deleteById("30")
-        ;
+        int i = userDao.deleteById("30");
+
+
+
     }
 
 
