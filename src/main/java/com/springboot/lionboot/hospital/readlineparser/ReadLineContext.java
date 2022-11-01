@@ -1,4 +1,4 @@
-package com.springboot.lionboot.pratice.readlineparser;
+package com.springboot.lionboot.hospital.readlineparser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

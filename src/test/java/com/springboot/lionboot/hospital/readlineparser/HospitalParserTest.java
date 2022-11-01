@@ -1,17 +1,15 @@
-package com.springboot.lionboot.pratice.readlineparser;
+package com.springboot.lionboot.dto.readlineparser;
 
-import com.springboot.lionboot.pratice.domain.Hospital;
-import com.springboot.lionboot.pratice.repository.HospitalDao;
+import com.springboot.lionboot.dto.domain.Hospital;
+import com.springboot.lionboot.dto.dao.HospitalDao;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,9 +31,12 @@ class HospitalParserTest {
     @Test
     @DisplayName("sql insert tdd")
     void insert() {
+        hospitalDao.deleteAll();
+        Assertions.assertThat(0).isEqualTo(hospitalDao.getCount());
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse(line1);
         hospitalDao.add(hospital);
+        assertEquals(1, hospitalDao.getCount());
         //
     }
 

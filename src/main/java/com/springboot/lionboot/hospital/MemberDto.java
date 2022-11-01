@@ -1,4 +1,4 @@
-package com.springboot.lionboot.dto;
+package com.springboot.lionboot.hospital;
 
 public class MemberDto {
 

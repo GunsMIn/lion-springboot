@@ -1,9 +1,12 @@
-package com.springboot.lionboot.pratice.repository;
+package com.springboot.lionboot.hospital.dao;
 
-import com.springboot.lionboot.pratice.domain.Hospital;
+import com.springboot.lionboot.hospital.domain.Hospital;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 @Component
 public class HospitalDao {
 
@@ -12,6 +15,30 @@ public class HospitalDao {
 
     public HospitalDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    RowMapper<Hospital> rowMapper = (rs, rowNum) -> {
+        Hospital hospital = new Hospital();
+        hospital.setId(rs.getInt("id"));
+        hospital.setOpenServiceName(rs.getString("open_service_name"));
+        hospital.setHospitalName(rs.getString("hospital_name"));
+        return hospital;
+    };
+
+    public Hospital findById(int id) {
+        return this.jdbcTemplate.queryForObject("select * from nation_wide_hospitals where id = ?", rowMapper, id);
+    }
+
+
+
+    public int getCount() {
+        String sql = "select count(id) from nation_wide_hospitals;";
+        return this.jdbcTemplate.queryForObject(sql, Integer.class);
+    }
+
+
+    public void deleteAll() {
+        this.jdbcTemplate.update("delete from nation_wide_hospitals");
     }
 
     //list<Hospital> -- 11만건 hospital

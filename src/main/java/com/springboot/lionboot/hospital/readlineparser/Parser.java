@@ -1,4 +1,4 @@
-package com.springboot.lionboot.pratice.readlineparser;
+package com.springboot.lionboot.hospital.readlineparser;
 
 public interface Parser<T> {
     T parse(String str);

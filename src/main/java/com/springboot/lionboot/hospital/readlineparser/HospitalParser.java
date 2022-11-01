@@ -1,6 +1,6 @@
-package com.springboot.lionboot.pratice.readlineparser;
+package com.springboot.lionboot.hospital.readlineparser;
 
-import com.springboot.lionboot.pratice.domain.Hospital;
+import com.springboot.lionboot.hospital.domain.Hospital;
 
 import java.time.LocalDateTime;
 

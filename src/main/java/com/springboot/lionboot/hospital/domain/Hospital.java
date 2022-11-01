@@ -1,4 +1,4 @@
-package com.springboot.lionboot.pratice.domain;
+package com.springboot.lionboot.hospital.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
