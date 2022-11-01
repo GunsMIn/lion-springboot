@@ -18,6 +18,10 @@
 - **practice 패키지**: 
 - **readLingParser 패키지** ` : .csv로 받은 10만건 이상의 병원 정모 공공 데이터를 spring에서 제작한 Hospital 객체로 parsing해주는 패키지 
 - **domain 패키지**  : Hospital 클래스 제작
+
+### 221101 (MySql과 JDBCtemplate 연동)
+![image](https://user-images.githubusercontent.com/104709432/199156854-b9b1c579-f05d-44fa-8acc-f9128b8a378c.png)
+
 </details>
 
 ---
