@@ -9,7 +9,6 @@
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white"/></a>
 
 ## Contents
-<details>
 <summary>병원 정보 처리 </summary>
 
 
@@ -30,7 +29,6 @@
 - **getCount(),deleteAll(), getCount(),findById() 메소드 추가**
 
 
-</details>
 
 ---
 
