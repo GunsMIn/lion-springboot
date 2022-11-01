@@ -1,20 +1,15 @@
-package com.springboot.lionboot.pratice.domain.repository;
+package com.springboot.lionboot.pratice.dao;
 
 
-import com.springboot.lionboot.pratice.domain.domain.User;
+import com.springboot.lionboot.pratice.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class UserDao {

@@ -1,4 +1,4 @@
-package com.springboot.lionboot.pratice.domain.repository;
+package com.springboot.lionboot.pratice.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
