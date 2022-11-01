@@ -20,8 +20,10 @@
 - **domain 패키지**  : Hospital 클래스 제작
 
 ### 221101 (MySql과 JDBCtemplate 연동)
+- **디비연동 조직도**
 ![image](https://user-images.githubusercontent.com/104709432/199156854-b9b1c579-f05d-44fa-8acc-f9128b8a378c.png)
-
+- **레이어 계층적용**
+![image](https://user-images.githubusercontent.com/104709432/199157116-70106c5c-6e91-4ce2-a5b9-966c9c91853f.png)
 </details>
 
 ---
