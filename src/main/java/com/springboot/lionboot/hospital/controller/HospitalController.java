@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 public class HospitalController {
@@ -15,9 +17,14 @@ public class HospitalController {
     private final HospitalDao hospitalDao;
 
     @GetMapping("/hospitals/{id}")
-    public Hospital findById(@PathVariable int id) {
+    public ResponseEntity<Hospital> findById(@PathVariable int id) {
         Hospital hospital = hospitalDao.findById(id);
-        return hospital;
+        Optional<Hospital> optionalHospital = Optional.of(hospital);
+        if (!optionalHospital.isEmpty()) {
+            return ResponseEntity.ok().body(hospital);
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Hospital());
+        }
     }
 
     @GetMapping("/hospitals")
@@ -30,6 +37,12 @@ public class HospitalController {
     public Hospital addHospital(@ModelAttribute Hospital hospital) {
         hospitalDao.add(hospital);
         return hospital;
+    }
+
+    @DeleteMapping("/hospitals")
+    public ResponseEntity<Hospital> deleteHospital() {
+        hospitalDao.deleteAll();
+        return ResponseEntity.status(HttpStatus.OK).body(new Hospital());
     }
 
 }
