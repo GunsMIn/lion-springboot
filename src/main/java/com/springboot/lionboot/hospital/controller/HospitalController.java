@@ -19,12 +19,16 @@ public class HospitalController {
     @GetMapping("/hospitals/{id}")
     public ResponseEntity<Hospital> findById(@PathVariable int id) {
         Hospital hospital = hospitalDao.findById(id);
-        Optional<Hospital> optionalHospital = Optional.of(hospital);
+        //null이 넘어올 경우 ,NPE를 던지지 않고 Optional.empty()와 동일하게 비어있는 Optional객체를 얻어온다.
+        // 해당 객체가 null인지 아닌지 자신이 없는 상황에서는 이 메소드를 사용해야한다
+        Optional<Hospital> optionalHospital = Optional.ofNullable(hospital);
         if (!optionalHospital.isEmpty()) {
             return ResponseEntity.ok().body(hospital);
         }else{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Hospital());
         }
+        //return ResponseEntity.status(HttpStatus.OK).body(optionalHospital.orElse(new Hospital()));
+
     }
 
     @GetMapping("/hospitals")
