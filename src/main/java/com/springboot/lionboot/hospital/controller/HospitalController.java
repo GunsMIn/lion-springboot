@@ -30,19 +30,16 @@ public class HospitalController {
         //return ResponseEntity.status(HttpStatus.OK).body(optionalHospital.orElse(new Hospital()));
 
     }
-
     @GetMapping("/hospitals")
     public int getCount() {
         int count = hospitalDao.getCount();
         return count;
     }
-
     @PostMapping("/hospitals/{id}")
     public Hospital addHospital(@ModelAttribute Hospital hospital) {
         hospitalDao.add(hospital);
         return hospital;
     }
-
     @DeleteMapping("/hospitals")
     public ResponseEntity<Hospital> deleteHospital() {
         hospitalDao.deleteAll();
