@@ -22,14 +22,15 @@ public class HospitalDao {
         hospital.setId(rs.getInt("id"));
         hospital.setOpenServiceName(rs.getString("open_service_name"));
         hospital.setHospitalName(rs.getString("hospital_name"));
+        hospital.setLicenseDate(rs.getTimestamp("license_date").toLocalDateTime());
+        hospital.setTotalAreaSize(rs.getFloat("total_area_size"));
+        // 나머지 매핑 완성, test code까지
         return hospital;
     };
 
     public Hospital findById(int id) {
         return this.jdbcTemplate.queryForObject("select * from nation_wide_hospitals where id = ?", rowMapper, id);
     }
-
-
 
     public int getCount() {
         String sql = "select count(id) from nation_wide_hospitals;";
